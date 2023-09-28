@@ -56,7 +56,7 @@ public class Frenado : MonoBehaviour
 	
 	public void Frenar()
 	{
-		GetComponent<ControlDireccion>().enabled = false;
+		GetComponent<PlayerController>().enabled = false;
 		gameObject.GetComponent<CarController>().SetAcel(0f);
         GetComponent<Rigidbody>().velocity = Vector3.zero;
 		
@@ -67,7 +67,7 @@ public class Frenado : MonoBehaviour
 	
 	public void RestaurarVel()
 	{
-		GetComponent<ControlDireccion>().enabled = true;
+		GetComponent<PlayerController>().enabled = true;
 		gameObject.GetComponent<CarController>().SetAcel(1f);
         Frenando = false;
 		Tempo = 0;

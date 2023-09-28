@@ -12,7 +12,7 @@ public class Visualizacion : MonoBehaviour
 	public enum Lado{Izq, Der}
 	public Lado LadoAct;
 	
-	ControlDireccion Direccion;
+	PlayerController Direccion;
 	Player Pj;
 
     public GameObject uiRoot;
@@ -57,7 +57,7 @@ public class Visualizacion : MonoBehaviour
     // Use this for initialization
     void Start () 
 	{
-		Direccion = GetComponent<ControlDireccion>();
+		Direccion = GetComponent<PlayerController>();
 		Pj = GetComponent<Player>();
     }
 	
