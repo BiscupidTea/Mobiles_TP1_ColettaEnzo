@@ -20,30 +20,30 @@ public class PalletMover : ManejoPallets
         switch (miInput)
         {
             case MoveType.WASD:
-                if (!Tenencia() && Desde.Tenencia() && Input.GetAxis("Horizontal1") < 0)
+                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis("Horizontal1") < 0)
                 {
                     PrimerPaso();
                 }
-                if (Tenencia() && Input.GetAxis("Vertical1") < 0)
+                if (Tenencia() && InputManager.Instance.GetAxis("Vertical1") < 0)
                 {
                     SegundoPaso();
                 }
-                if (segundoCompleto && Tenencia() && Input.GetAxis("Horizontal1") > 0)
+                if (segundoCompleto && Tenencia() && InputManager.Instance.GetAxis("Horizontal1") > 0)
                 {
                     TercerPaso();
                 }
                 break;
 
             case MoveType.Arrows:
-                if (!Tenencia() && Desde.Tenencia() && Input.GetAxis("Horizontal2") < 0)
+                if (!Tenencia() && Desde.Tenencia() && InputManager.Instance.GetAxis("Horizontal2") < 0)
                 {
                     PrimerPaso();
                 }
-                if (Tenencia() && Input.GetAxis("Vertical2") < 0)
+                if (Tenencia() && InputManager.Instance.GetAxis("Vertical2") < 0)
                 {
                     SegundoPaso();
                 }
-                if (segundoCompleto && Tenencia() && Input.GetAxis("Horizontal2") > 0)
+                if (segundoCompleto && Tenencia() && InputManager.Instance.GetAxis("Horizontal2") > 0)
                 {
                     TercerPaso();
                 }

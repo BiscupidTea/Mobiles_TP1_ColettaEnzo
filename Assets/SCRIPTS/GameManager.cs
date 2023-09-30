@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     public GameObject Player1UI;
     public GameObject Player2UI;
 
+    public DificultySetter DificultySetter;
+
     //--------------------------------------------------------//
 
     void Awake()
@@ -92,12 +94,12 @@ public class GameManager : MonoBehaviour
 
             case EstadoJuego.Calibrando:
 
-                if (Input.GetKeyDown(KeyCode.W))
+                if (InputManager.Instance.GetAxis("Vertical1") > 0)
                 {
                     Player1.Seleccionado = true;
                 }
 
-                if (Input.GetKeyDown(KeyCode.UpArrow))
+                if (InputManager.Instance.GetAxis("Vertical2") > 0)
                 {
                     Player2.Seleccionado = true;
                 }
@@ -301,6 +303,8 @@ public class GameManager : MonoBehaviour
         {
             ObjsCarrera[i].SetActive(true);
         }
+
+        DificultySetter.StartNewRace(Dificulty);
 
         if (Multiplayer)
         {

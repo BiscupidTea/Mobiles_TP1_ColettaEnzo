@@ -19,22 +19,6 @@ public class Bolsa : MonoBehaviour
 		Monto = Pallet.Valores.Valor2;
 	}
 	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-		if(Desapareciendo)
-		{
-			TiempParts -= Time.deltaTime;
-			if(TiempParts <= 0)
-			{
-				GetComponent<Renderer>().enabled = true;
-				GetComponent<Collider>().enabled = true;
-			}
-		}
-		
-	}
-	
 	void OnTriggerEnter(Collider coll)
 	{
 		if(coll.tag == TagPlayer)
@@ -48,10 +32,7 @@ public class Bolsa : MonoBehaviour
 	public void Desaparecer()
 	{
 		Particulas.SetActive(true);
-		Desapareciendo = true;
-		
-		GetComponent<Renderer>().enabled = false;
-		GetComponent<Collider>().enabled = false;
+		gameObject.SetActive(false);
 	
 	}
 }
