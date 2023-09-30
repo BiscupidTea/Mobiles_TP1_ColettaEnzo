@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MngPts : MonoBehaviour 
 {
@@ -30,6 +32,13 @@ public class MngPts : MonoBehaviour
 	public bool ActivadoAnims = false;
 	
 	Visualizacion Viz = new Visualizacion();
+
+	public Image winnnerText;
+	public Sprite winnner1;
+	public Sprite winnner2;
+
+	public TextMeshProUGUI Player1;
+	public TextMeshProUGUI Player2;
 	
 	//---------------------------------//
 	
@@ -133,56 +142,29 @@ public class MngPts : MonoBehaviour
 	
 	void SetDinero()
 	{
-		GUI.skin = GS_Dinero;
-		
-		R.width = DineroEsc.x * Screen.width/100;
-		R.height = DineroEsc.y * Screen.height/100;
-		
-		
-		
-		//IZQUIERDA
-		R.x = DineroPos[0].x * Screen.width/100;
-		R.y = DineroPos[0].y * Screen.height/100;
-		
-		if(DatosPartida.LadoGanadaor == DatosPartida.Lados.Izq)//izquierda
+		if (DatosPartida.LadoGanadaor == DatosPartida.Lados.Izq)
 		{
-			if(!PrimerImaParp)//para que parpadee
-				GUI.Box(R, "$" + Viz.PrepararNumeros(DatosPartida.PtsGanador));
-		}
+            Player1.text = DatosPartida.PtsGanador.ToString();
+            Player2.text = DatosPartida.PtsPerdedor.ToString();
+        }
 		else
 		{
-			GUI.Box(R, "$" + Viz.PrepararNumeros(DatosPartida.PtsPerdedor));
-		}
-		
-		
-		
-		//DERECHA
-		R.x = DineroPos[1].x * Screen.width/100;
-		R.y = DineroPos[1].y * Screen.height/100;
-		
-		if(DatosPartida.LadoGanadaor == DatosPartida.Lados.Der)//derecha
-		{
-			if(!PrimerImaParp)//para que parpadee
-				GUI.Box(R, "$" + Viz.PrepararNumeros(DatosPartida.PtsGanador));
-		}
-		else
-		{
-			GUI.Box(R, "$" + Viz.PrepararNumeros(DatosPartida.PtsPerdedor));
-		}
-		
+            Player1.text = DatosPartida.PtsPerdedor.ToString();
+            Player2.text = DatosPartida.PtsGanador.ToString();
+        }		
 	}
 	
 	void SetCartelGanador()
 	{
-		GUI.skin = GS_Ganador;
-		
-		R.width = GanadorEsc.x * Screen.width/100;
-		R.height = GanadorEsc.y * Screen.height/100;
-		R.x = GanadorPos.x * Screen.width/100;
-		R.y = GanadorPos.y * Screen.height/100;
-		
-		GUI.Box(R, "");
-	}
+		if (DatosPartida.LadoGanadaor == DatosPartida.Lados.Izq)
+		{
+			winnnerText.sprite = winnner1;
+		}
+		else
+		{
+			winnnerText.sprite = winnner2;
+        }
+    }
 	
 	public void DesaparecerGUI()
 	{
